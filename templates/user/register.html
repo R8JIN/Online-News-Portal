@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static 'forEdit.css' %}">
+    <!-- <link rel="stylesheet" href="reg.css"> -->
+</head>
+<body>
+    <div id="form_sec">
+        <h1>Create News</h1>
+        <form>
+            <div class="form_group">
+                <label for="cars">Categories:</label>
+        
+                <select name="type" id="type">
+                  <option value="technology">technology</option>
+                  <option value="nature">nature</option>
+                  <option value="photography">photography</option>
+                  <option value="sports">sports</option>
+                </select>
+              </div>
+        <div class="form_group">
+            <label>Title:</label>
+            <input type="text" required placeholder="Enter Your Title">
+        <div class="form_group">
+            <label>Caption:</label>
+            <input type="text" required placeholder="enter your caption" >
+        </div>
+        <div class="form_group">
+            <label>Detail:</label>
+            <textarea name="details" id="details" cols="30" rows="10"></textarea>
+        </div>
+       
+        <div class="form_group">
+            <label>Thumbnail:</label>
+            <input type="file" >
+        </div>
+        <div class="form_group">
+            <label>Image:</label>
+            <input type="file" >
+        </div>
+       
+        
+            <div class="btn">
+                <button>Submit</button>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

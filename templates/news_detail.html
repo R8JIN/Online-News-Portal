@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+
+
+
+<div class="blog-single gray-bg">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col-lg-8 m-15px-tb">
+                    <article class="article">
+                        <div class="article-img">
+                            <img src="/media/{{post.image}}" title="" alt="">
+
+                        </div>
+                        <div class="article-title">
+                            <h6><a href="#">{{post.category}}</a></h6>
+                            <h2>{{post.title}}</h2>
+                            <div class="media">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" title="" alt="">
+                                </div>
+                                <div class="media-body ">
+                                    <div class="d-inline-block">
+                                        <label>{{post.author| title}}</label>
+                                      <span>{{post.date}}</span>
+                                    </div>
+                                    <div class="d-inline-block justify-content-end">
+                                    <a href="{% url 'bookmark' pid=post.id %}" class="text-decoration-none text-decoration-dark" alt="bookmark">
+                                        <i class="fas fa-bookmark fa-lg  " style="color: #050505;"></i>
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-content">
+                        {{post.details|safe}}
+                        </div>
+
+
+                    </article>
+                   <div class="contact-form article-comment">
+                        <h4>Leave a Reply</h4>
+                       {% if user.is_authenticated %}
+                       <form id="contact-form" method="POST" >
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-10 ">
+                                    <div class="form-group">
+                                        {{form}}
+                                        {{form.media}}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="send">
+                                        <button class="px-btn theme"><span>Submit</span> <i class="arrow"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                       {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-4 m-15px-tb blog-aside">
+                    <!-- Author -->
+                    <div class="widget widget-author">
+                        <div class="widget-title">
+                            <h3>Author</h3>
+                        </div>
+                        <div class="widget-body">
+                            <div class="media align-items-center">
+                                <div class="avatar">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" title="" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <h6>Hello, I'm<br> Rachel Roth</h6>
+                                </div>
+                            </div>
+                            <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores</p>
+                        </div>
+                    </div>
+                    <!-- End Author -->
+                    <!-- Trending Post -->
+
+                    <!-- End Trending Post -->
+                    <!-- Latest Post -->
+                    <div class="widget widget-latest-post">
+                        <div class="widget-title">
+                            <h3>Related Post</h3>
+                        </div>
+                        <div class="widget-body">
+                            {% for pc in post_cat %}
+                            <div class="latest-post-aside media">
+                                <div class="lpa-left media-body">
+                                    <div class="lpa-title">
+                                        <h5><a href="#">{{pc.title}}</a></h5>
+                                    </div>
+                                    <div class="lpa-meta">
+                                        <a class="name" href="#">
+                                            {{pc.author}}
+                                        </a>
+                                        <a class="date" href="#">
+                                            {{pc.date}}
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="lpa-right">
+                                    <a href="#">
+                                        <img src="/media/{{pc.image}}" title="" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                        </div>
+                    </div>
+                    <!-- End Latest Post -->
+                    <!-- widget Tags -->
+                    <div class="widget widget-tags">
+                        <div class="widget-title">
+                            <h3>Latest Tags</h3>
+                        </div>
+                        <div class="widget-body">
+                            <div class="nav tag-cloud">
+                                {% for c in category %}
+                                <a href="#">{{c.title}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End widget Tags -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

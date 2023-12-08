@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<main class="container">
+      <div class="container">
+      <div class="d-flex justify-content-start">
+       <p> <h4>Bookmarks</h4></p>
+      </div>
+
+  <div class="album  p-3 bg-body-tertiary">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 ">
+          {% for p in post %}
+        <div class="col-md-3">
+          <div class="card h-100">
+            <div class="card-img">
+              <img src="/media/{{p.post.image}}/" class="card-img-top " alt="{{p.post.title}}"/>
+            </div>
+            <div class="card-body ">
+
+              <p class="card-text">{{p.post.title}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+              </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="btn-group d-flex justify-content-start">
+                  <a href="{% url 'article' id=p.id %}" class="text-decoration-none">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  </a>
+                </div>
+              <div class="d-flex justify-content-end">
+                <small class="text-body-secondary">{{p.post.date}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+{% endblock %}

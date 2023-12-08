@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h4 class="d-flex justify-content-center">Add Article</h4>
+<div class="container-md d-flex justify-content-center">
+
+<form action="{% url 'add' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        {{form.as_p}}
+    </div>
+
+
+    {{form.media}}
+     <input class="btn btn-primary" type="submit">
+</form>
+</div>
+
+
+{% endblock %}

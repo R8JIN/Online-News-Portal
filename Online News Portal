@@ -1,0 +1,9 @@
+    User
+        name, mobile, email, username, password
+        register(), update(), view(), login(), delete()
+    News
+        topic, date, details, author, category
+        add() view() update() view()
+    Comment
+        fullname, email, comments, status(approved/requested)
+        add() view() update() delete()
